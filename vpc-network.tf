@@ -22,3 +22,30 @@ resource "google_compute_subnetwork" "sca-project-public-subnet" {
   region = "${var.public_subnet_region}"
 }
 
+# Create firewall rules
+resource "google_compute_firewall" "project-allow-http" {
+  name = "${var.vpc_name}-allow-http"
+  network = google_compute_network.sca-project-network.name
+  description = "Creates firewall rule targeting tagged instances"
+
+  allow {
+    protocol = "tcp"
+    ports = ["8080"]
+  }
+
+
+  target_tags = ["jenkins-server"]
+}
+resource "google_compute_firewall" "project-allow-ssh" {
+  name = "${var.vpc_name}-allow-ssh"
+  network = google_compute_network.sca-project-network.name
+  description = "Creates firewall rule targeting tagged instances"
+
+  allow {
+    protocol = "tcp"
+    ports = ["22"]
+  }
+
+
+  target_tags = ["jenkins-server", "ansible-server"]
+}
