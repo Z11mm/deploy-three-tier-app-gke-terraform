@@ -30,11 +30,11 @@ resource "google_compute_firewall" "project-allow-http" {
 
   allow {
     protocol = "tcp"
-    ports = ["8080"]
+    ports = ["8080", "80"]
   }
 
 
-  target_tags = ["jenkins-server"]
+  target_tags = ["jenkins-server", "http-server"]
 }
 resource "google_compute_firewall" "project-allow-ssh" {
   name = "${var.vpc_name}-allow-ssh"

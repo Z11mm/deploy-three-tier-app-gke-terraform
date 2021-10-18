@@ -4,7 +4,7 @@ resource "google_compute_instance" "jenkins" {
   zone = "${var.public_subnet_zone}"
 
   //  Apply the firewall rule to allow external IPs to access this instance
-  tags = [ "jenkins-server" ]
+  tags = [ "jenkins-server", "http-server" ]
 
   network_interface {
     network = google_compute_network.sca-project-network.name
@@ -22,4 +22,9 @@ resource "google_compute_instance" "jenkins" {
         size = 10
     }
   }
+
+  service_account {
+     scopes = ["cloud-platform"]
+   }
+
 }

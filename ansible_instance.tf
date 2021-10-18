@@ -10,9 +10,9 @@ resource "google_compute_instance" "ansible" {
     network = google_compute_network.sca-project-network.name
     subnetwork = google_compute_subnetwork.sca-project-public-subnet.name
 
-    # access_config {
-    #   //   Include this block to give the VM a public IP address
-    # }
+    access_config {
+      //   Include this block to give the VM a public IP address
+    }
   }
 
   boot_disk {
