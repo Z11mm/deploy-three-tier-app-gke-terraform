@@ -1,7 +1,8 @@
 resource "google_compute_instance" "jenkins" {
   name = "jenkins-instance"
-  machine_type = "e2-micro"
+  machine_type = "e2-medium"
   zone = "${var.public_subnet_zone}"
+  allow_stopping_for_update = true
 
   //  Apply the firewall rule to allow external IPs to access this instance
   tags = [ "jenkins-server", "http-server" ]
