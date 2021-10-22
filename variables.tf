@@ -46,3 +46,21 @@ variable "max_node_count" {
 variable "machine_type" {
   type = string
 }
+variable "db_instance_name" {
+  type = string
+}
+variable "db_name" {
+  type = string
+}
+variable "db_version" {
+  type = string
+}
+variable "db_username" {
+  type = string
+}
+variable "db_user_passwd" {
+  type = string
+}
+variable "instance_zone" {
+  type = string
+}

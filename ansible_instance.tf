@@ -1,7 +1,7 @@
 resource "google_compute_instance" "ansible" {
   name = "ansible-instance"
   machine_type = "e2-micro"
-  zone = "${var.public_subnet_zone}"
+  zone = "${var.instance_zone}"
 
   //  Apply the firewall rule to allow external IPs to access this instance
   tags = [ "ansible-server" ]
